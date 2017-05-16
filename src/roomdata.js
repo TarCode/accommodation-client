@@ -19,7 +19,7 @@ export const rooms = [
       img_url: 'https://randomuser.me/api/portraits/thumb/men/27.jpg'
     },
     {
-      id: '123',
+      id: '124',
       name: 'Sam Lamb',
       gender: 'male',
       university: 'Harvard',
