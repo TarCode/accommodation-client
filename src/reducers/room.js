@@ -1,7 +1,7 @@
 import {
   GET_ROOM,
   GET_ROOM_SUCCESS
-} from '../actions'
+} from '../actions/room'
 
 import { merge } from 'lodash'
 

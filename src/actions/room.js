@@ -1,7 +1,3 @@
-export const GET_ROOMS = "GET_ROOMS"
-export const GET_ROOMS_SUCCESS = "GET_ROOMS_SUCCESS"
-export const GET_ROOMS_ERROR = "GET_ROOMS_ERROR"
-
 export const GET_ROOM = "GET_ROOM"
 export const GET_ROOM_SUCCESS = "GET_ROOM_SUCCESS"
 export const GET_ROOM_ERROR = "GET_ROOM_ERROR"
@@ -14,13 +10,11 @@ export const CANCEL_ROOM = "CANCEL_ROOM"
 export const CANCEL_ROOM_SUCCESS = "CANCEL_ROOM_SUCCESS"
 export const CANCEL_ROOM_ERROR = "CANCEL_ROOM_ERROR"
 
-export const GET_CURRENT_ROOM = "GET_CURRENT_ROOM"
-export const GET_CURRENT_ROOM_SUCCESS = "GET_CURRENT_ROOM_SUCCESS"
 
-export const getCurrentRoom = (user) => {
+export const getRoom = (roomId) => {
   return dispatch => {
-    dispatch({ type: GET_CURRENT_ROOM })
-    fetch(`http://localhost:3001/roommates/${user}`, {
+    dispatch({ type: GET_ROOM })
+    fetch(`http://localhost:3001/rooms/${roomId}`, {
       // credentials: 'include',
       mode: 'cors',
       headers: {
@@ -31,9 +25,11 @@ export const getCurrentRoom = (user) => {
         // authorization: `Bearer ${ getLocalToken() }`
       // }
     })
-    .then(response => response.json())
+    .then(response => {
+      return response.json()
+    })
     .then(json => {
-      dispatch({ type: GET_CURRENT_ROOM_SUCCESS, user: json })
+      dispatch({ type: GET_ROOM_SUCCESS, room: json.room, roommates: json.roommates })
     })
   }
 }
@@ -73,7 +69,7 @@ export const bookRoom = (roomId, student) => {
           .then(response => response.json())
           .then(json => {
             window.alert("Booked spot in room!")
-            dispatch({ type: GET_CURRENT_ROOM_SUCCESS, user: json })
+            dispatch({ type: 'GET_CURRENT_ROOM_SUCCESS', user: json })
             fetch(`http://localhost:3001/rooms/${roomId}`, {
               // credentials: 'include',
               mode: 'cors',
@@ -132,7 +128,7 @@ export const cancelRoom = (user, roomId) => {
           .then(response => response.json())
           .then(json => {
             console.log('json', json);
-            dispatch({ type: GET_CURRENT_ROOM_SUCCESS, user: json })
+            dispatch({ type: 'GET_CURRENT_ROOM_SUCCESS', user: json })
             fetch(`http://localhost:3001/rooms/${roomId}`, {
               // credentials: 'include',
               mode: 'cors',
@@ -153,50 +149,5 @@ export const cancelRoom = (user, roomId) => {
           })
         }
       })
-  }
-}
-
-export const getRooms = () => {
-  return dispatch => {
-    dispatch({ type: GET_ROOMS })
-    fetch(`http://localhost:3001/rooms`, {
-      // credentials: 'include',
-      mode: 'cors',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      // headers: {
-        // authorization: `Bearer ${ getLocalToken() }`
-      // }
-    })
-    .then(response => response.json())
-    .then(json => {
-      console.log('json', json);
-      dispatch({ type: GET_ROOMS_SUCCESS, rooms: json })
-    })
-  }
-}
-
-export const getRoom = (roomId) => {
-  return dispatch => {
-    dispatch({ type: GET_ROOM })
-    fetch(`http://localhost:3001/rooms/${roomId}`, {
-      // credentials: 'include',
-      mode: 'cors',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      // headers: {
-        // authorization: `Bearer ${ getLocalToken() }`
-      // }
-    })
-    .then(response => {
-      return response.json()
-    })
-    .then(json => {
-      dispatch({ type: GET_ROOM_SUCCESS, room: json.room, roommates: json.roommates })
-    })
   }
 }

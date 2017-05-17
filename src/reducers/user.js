@@ -1,14 +1,14 @@
 import {
   BOOK_ROOM_SUCCESS,
-  CANCEL_ROOM,
-  GET_CURRENT_ROOM_SUCCESS
-} from '../actions'
+  CANCEL_ROOM
+} from '../actions/room'
+import { GET_CURRENT_ROOM_SUCCESS } from '../actions/user'
 
 import { merge } from 'lodash'
 
 export default (state = {
   id: '100',
-  name: 'Bill Hix',
+  name: 'Joe Dirt',
   gender: 'male',
   university: 'Stanford',
   img_url: 'https://randomuser.me/api/portraits/thumb/men/31.jpg'

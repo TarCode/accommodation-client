@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getRoom, bookRoom, cancelRoom } from '../../actions'
+import { getRoom, bookRoom, cancelRoom } from '../../actions/room'
 
 class Room extends Component {
   componentDidMount() {

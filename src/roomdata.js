@@ -50,3 +50,16 @@ current: [
 }
 
 ]
+
+const imgList = ["https://www.nerdfitness.com/wp-content/uploads/2010/12/Screen-shot-2010-12-20-at-12.45.56-PM.png", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8QtUy0OaPpbaiVNCWipRF4D-VEVK1fUJMO8nj59MxL2J0Jyt6"]
+export const room = {
+  name: 'Room '+ Math.floor(Math.random() * 99) + 1,
+  size: 'large',
+  img_url: imgList[(Math.floor(Math.random() * 2) + 1) - 1],
+  views: [
+    'Balcony overlooking beach',
+    'Window with view of Table Mountain'
+  ],
+  amenities: ['Wifi', 'DSTV', 'Air Conditioning'],
+  max_roommates: 6,
+}

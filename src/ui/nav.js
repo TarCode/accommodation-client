@@ -1,7 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { addRoom } from '../actions/room-admin'
+import { room } from '../roomdata'
 
-const Navbar = ({ Link, user }) => (
+const Navbar = ({ Link, user, addRoom }) => (
   <nav>
     <div className="nav-wrapper">
       <Link to='/' className="brand-logo">
@@ -9,7 +12,9 @@ const Navbar = ({ Link, user }) => (
       {user.name}
     </Link>
       <ul className="right">
-        <li><Link to='/my-room'>My Room</Link></li>
+        <li><a onClick={() => {
+          addRoom(room)
+        }} href='#'>Add Mock Room</a></li>
       </ul>
     </div>
   </nav>
@@ -22,4 +27,11 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Navbar)
+function mapDispatchToProps(dispatch) {
+  return {
+    addRoom: bindActionCreators(addRoom, dispatch)
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

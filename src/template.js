@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getCurrentRoom } from './actions'
+import { getCurrentRoom } from './actions/user'
 import { Route } from 'react-router-dom'
 import Rooms from './ui/rooms'
 import Room from './ui/room'
