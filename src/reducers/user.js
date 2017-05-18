@@ -6,6 +6,7 @@ import { GET_CURRENT_ROOM_SUCCESS } from '../actions/user'
 
 import { merge } from 'lodash'
 
+// initial state contains mock user info 
 export default (state = {
   id: '100',
   name: 'Joe Dirt',
